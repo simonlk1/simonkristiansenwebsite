@@ -1,0 +1,19 @@
+name: Check Prettier
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: run prettier
+      - uses: creyD/prettier_action@v4.1.1
+      with:
+        prettier_options: --check --plugin-search-dir=. src/**/*.{html,js,ts,svelte}
